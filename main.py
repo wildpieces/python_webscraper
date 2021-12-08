@@ -10,17 +10,70 @@ All this functions should check for errors, follow the comments to see all cases
 There should be NO ERRORS from Python in the console.
 """
 
-def add_to_dict():
-  pass
+def add_to_dict(dic, key, value = None):
+  if type(dic) is dict:
+    if value is None:
+      print("You need to send a word and a definition.")
+      return dic
+    elif key in dic:
+      print(f"{key} is already on the dictionary. Won't add.")
+      return dic
+    else:
+      dic[key] = value
+      print(f"{key} has been added.")
+      return dic
+  else:
+    print(f"You need to send a dictionary. You sent: {type(dic)}")
+    return ""
 
-def get_from_dict():
-  pass
 
-def update_word():
-  pass
+def get_from_dict(dic, key = None, value = None):
+  if type(dic) is dict:
+    if key is None:
+      print("You need to send a word to search for.")
+      return dic
+    elif key in dic:
+      print(f"{key}: {dic[key]}")
+      return dic
+    else:
+      print(f"{key} was not found in this dict.")
+      return dic
+  else:
+    print(f"You need to send a dictionary. You sent: {type(dic)}")
+    return ""
+  
 
-def delete_from_dict():
-  pass
+def update_word(dic, key, value = None):
+  if type(dic) is dict:
+    if value is None:
+      print("You need to send a word and definition to update.")
+      return dic
+    elif key in dic:
+      dic[key] = value
+      print(f"{key} has been updated to: {value}")
+      return dic
+    else:
+      print(f"{key} is not on the dict. Can't update non-existing word.")
+  else:
+    print(f"You need to send a dictionary. You sent: {type(dic)}")
+    return ""
+
+def delete_from_dict(dic, key = None):
+  if type(dic) is dict:
+    if key is None:
+      print("You need to specify a word to delete.")
+      return dic
+    elif key in dic:
+      del dic[key]
+      print(f"{key} has been deleted.")
+      return dic
+    else:
+      print(f"{key} is not in this dict. Won't delete.")
+      return dic
+
+  else:
+    print(f"You need to send a dictionary. You sent: {type(dic)}")
+    return dic
 
 # \/\/\/\/\/\/\ DO NOT TOUCH  \/\/\/\/\/\/\
 
